@@ -14,12 +14,12 @@ public class NotificationControllerV2 {
 
     private final SseEmitters emitters = new SseEmitters();
 
-    @GetMapping(path = "/performance", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(path = "/consume", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     SseEmitter getPerformance() {
         return emitters.add(new SseEmitter());
     }
 
-    @PostMapping(path ="publish")
+    @PostMapping(path ="/publish")
     void publishMessage(@RequestBody Message message) {
         emitters.send(message);
     }
