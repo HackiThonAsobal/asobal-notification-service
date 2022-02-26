@@ -14,8 +14,6 @@ public class NotificationController {
 
     private MyEventProcessor myEventProcessor = new MyEventProcessor();
 
-
-
     Flux<Message> bridge = Flux.create(messageFluxSink -> {
         myEventProcessor.register(messageFluxSink);
     });
